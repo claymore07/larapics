@@ -1,0 +1,3 @@
+<?php
+symlink("/home/bnm/laravel/storage/app/public","/home/bnm/public_html/storage");
+?>
