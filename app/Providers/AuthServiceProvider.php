@@ -30,8 +30,6 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
-
         // Gate::define('update-image', function(User $user, Image $image){
         //     // dump('After image-Update');
         //     return $user->id === $image->user_id || $user->role === Role::Editor;
