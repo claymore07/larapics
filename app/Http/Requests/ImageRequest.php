@@ -24,25 +24,27 @@ class ImageRequest extends FormRequest
      */
     public function rules()
     {
-        if($this->method() == 'PUT'){
+        if ($this->method() == 'PUT') {
             return [
                 'title' => 'required',
-                'tags'  => 'required',
+                'tags' => 'required',
             ];
         }
+
         return [
             'file' => 'required|image',
             'title' => 'nullable',
-            'tags'  => 'nullable',
+            'tags' => 'nullable',
         ];
     }
 
-    public function getData(){
+    public function getData()
+    {
         $data = $this->validated() + [
             'user_id' => $this->user()->id,
         ];
 
-        if($this->hasFile('file')){
+        if ($this->hasFile('file')) {
             $directory = Image::makeDirectory();
 
             $data['file'] = $this->file->store($directory);

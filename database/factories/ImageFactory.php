@@ -20,9 +20,9 @@ class ImageFactory extends Factory
         return [
             //
             'title' => $title = substr(fake()->sentence(), 20),
-            'slug'  => str()->slug($title),
-            'file'  => fake()->imageUrl($width = 1920, $height = 1280),
-            'dimension' => $width . "x" . $height, // 1920x1280
+            'slug' => str()->slug($title),
+            'file' => fake()->imageUrl($width = 1920, $height = 1280),
+            'dimension' => $width.'x'.$height, // 1920x1280
             'views_count' => fake()->randomNumber(5),
             'downloads_count' => fake()->randomNumber(5),
             'is_published' => true,

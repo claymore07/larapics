@@ -28,7 +28,8 @@ class CreateCommentRequest extends FormRequest
         ];
     }
 
-    public function getData(){
+    public function getData()
+    {
         return $this->validated() + [
             'user_id' => $this->user()->id,
         ];

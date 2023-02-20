@@ -71,7 +71,7 @@ class ImagePolicy
     public function delete(User $user, Image $image)
     {
         //
-        return $user->id === $image->user_id ;
+        return $user->id === $image->user_id;
     }
 
     /**

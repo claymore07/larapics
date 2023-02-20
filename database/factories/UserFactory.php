@@ -19,10 +19,11 @@ class UserFactory extends Factory
     public function definition()
     {
         $this->faker->addProvider(new Address($this->faker));
+
         return [
             'name' => fake()->name(),
             'email' => $email = fake()->unique()->safeEmail(), // bob@gmail.com ==> @ ==> bob
-            'username' => strstr($email, '@', true).rand(100,150),
+            'username' => strstr($email, '@', true).rand(100, 150),
             'city' => rand(0, 1) === 0 ? null : $this->faker->city(),
             'country' => rand(0, 1) === 0 ? null : $this->faker->country(),
             'about_me' => rand(0, 1) === 0 ? null : substr(fake()->text, 15),

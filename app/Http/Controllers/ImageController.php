@@ -15,6 +15,7 @@ class ImageController extends Controller
 
         $this->authorizeResource(Image::class);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -53,6 +54,7 @@ class ImageController extends Controller
         //
         $image = Image::create($data = $request->getData());
         $image->syncTags($data['tags']); // mountain,sea,fire,camp
+
         return to_route('images.index')->with('message', 'Image has been uploaded Successfully!');
     }
 
@@ -102,6 +104,7 @@ class ImageController extends Controller
 
         $image->update($data = $request->getData());
         $image->syncTags($data['tags']);
+
         return to_route('images.index')->with('message', 'Image has been Updated Successfully!');
     }
 
@@ -117,6 +120,7 @@ class ImageController extends Controller
         //     abort(403, "Access denied");
         // }
         $image->delete();
-        return to_route('images.index')->with('message','Image has been deleted Successfully!');
+
+        return to_route('images.index')->with('message', 'Image has been deleted Successfully!');
     }
 }

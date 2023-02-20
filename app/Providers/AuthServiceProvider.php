@@ -47,12 +47,10 @@ class AuthServiceProvider extends ServiceProvider
 
         // Gate::define('delete-image', [PolicyForImage::class, 'delete']);
 
-
-        Gate::before(function($user, $ability){
-            if($user->role === Role::Admin){
+        Gate::before(function ($user, $ability) {
+            if ($user->role === Role::Admin) {
                 return true;
             }
         });
-
     }
 }

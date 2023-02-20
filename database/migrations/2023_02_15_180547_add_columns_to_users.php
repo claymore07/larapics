@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('city')->nullable()->after('cover_image');
             $table->string('country')->nullable()->after('city');
             $table->string('about_me')->nullable()->after('country');
-
         });
     }
 

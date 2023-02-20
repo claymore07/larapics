@@ -9,7 +9,6 @@ enum Role: string
     case Author = 'Author';
 }
 
-
 // class Role {
 //     public const Admin = 'Admin';
 //     public const Editor = 'Editor';

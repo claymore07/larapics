@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class ListImageController extends Controller
 {
     private $perPage = 15;
+
     /**
      * Handle the incoming request.
      *
@@ -19,11 +20,10 @@ class ListImageController extends Controller
     {
         //
         $images =
-        Image::
-        published()
-        ->where(function($query) use($tag){
-            if($tag->id){
-                $query->whereHas('tags', function($query) use ($tag){
+        Image::published()
+        ->where(function ($query) use ($tag) {
+            if ($tag->id) {
+                $query->whereHas('tags', function ($query) use ($tag) {
                     $query->where('id', $tag->id);
                 });
             }

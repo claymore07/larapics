@@ -30,11 +30,12 @@ class ReplyCommentRequest extends FormRequest
 
     public function getData()
     {
-       $comment = $this->route('comment');
-       return [
-            'body' => "@". $comment->user->username . "\n" . $this->body,
+        $comment = $this->route('comment');
+
+        return [
+            'body' => '@'.$comment->user->username."\n".$this->body,
             'image_id' => $comment->image_id,
-            'user_id'  => $this->user()->id,
-       ];
+            'user_id' => $this->user()->id,
+        ];
     }
 }

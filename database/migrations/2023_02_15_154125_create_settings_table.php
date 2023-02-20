@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unique('user_id');
             $table->boolean('disable_comments')->default(false);
             $table->boolean('moderate_comments')->default(false);
-            $table->json("email_notification");
+            $table->json('email_notification');
             $table->timestamps();
         });
     }

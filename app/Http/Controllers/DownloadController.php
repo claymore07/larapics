@@ -14,10 +14,11 @@ class DownloadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Image $image,Request $request)
+    public function __invoke(Image $image, Request $request)
     {
         //
         $image->increment('downloads_count');
+
         return Storage::download($image->file);
     }
 }
