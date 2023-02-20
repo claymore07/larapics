@@ -17,7 +17,7 @@ class ImagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         //
         return true;
@@ -30,7 +30,7 @@ class ImagePolicy
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Image $image)
+    public function view(User $user, Image $image): bool
     {
         //
         return true;
@@ -42,7 +42,7 @@ class ImagePolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user)
+    public function create(User $user): bool
     {
         //
         return true;
@@ -55,7 +55,7 @@ class ImagePolicy
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Image $image)
+    public function update(User $user, Image $image): bool
     {
         //
         return $user->id === $image->user_id || $user->role === Role::Editor;
@@ -68,7 +68,7 @@ class ImagePolicy
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Image $image)
+    public function delete(User $user, Image $image): bool
     {
         //
         return $user->id === $image->user_id;
@@ -81,7 +81,7 @@ class ImagePolicy
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Image $image)
+    public function restore(User $user, Image $image): bool
     {
         //
     }
@@ -93,7 +93,7 @@ class ImagePolicy
      * @param  \App\Models\Image  $image
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Image $image)
+    public function forceDelete(User $user, Image $image): bool
     {
         //
     }

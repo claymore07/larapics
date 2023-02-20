@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $images =
         Image::visibleFor(request()->user())
@@ -37,7 +38,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         //
         return view('image.create');
@@ -64,7 +65,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show(Image $image): View
     {
         // return view('image.show', compact('image'));
     }
@@ -75,7 +76,7 @@ class ImageController extends Controller
      * @param  Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit(Image $image): View
     {
         // if (!Gate::allows('update-image', $image)) {
         //     abort(403, "Access denied");

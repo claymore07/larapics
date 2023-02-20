@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Image;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class ListImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, ?Tag $tag)
+    public function __invoke(Request $request, ?Tag $tag): View
     {
         //
         $images =

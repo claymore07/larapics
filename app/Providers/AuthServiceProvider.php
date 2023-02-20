@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Gate::define('update-image', function(User $user, Image $image){
         //     // dump('After image-Update');

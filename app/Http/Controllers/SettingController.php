@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Http\Requests\UpdateSettingRequest;
 
 class SettingController extends Controller
@@ -12,7 +13,7 @@ class SettingController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function edit()
+    public function edit(): View
     {
         return view('setting', ['user' => auth()->user()]);
     }

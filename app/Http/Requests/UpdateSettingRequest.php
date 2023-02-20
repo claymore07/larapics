@@ -14,7 +14,7 @@ class UpdateSettingRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -24,7 +24,7 @@ class UpdateSettingRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         $request = $this;
         $pass = $request['account']['password'];
@@ -59,7 +59,7 @@ class UpdateSettingRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'social.facebook' => 'facebook',

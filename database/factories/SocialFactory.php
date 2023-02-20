@@ -14,7 +14,7 @@ class SocialFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'instagram' => rand(0, 1) === 1 ? $this->faker->url() : null,

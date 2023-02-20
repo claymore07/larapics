@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class FavorController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index()
+    public function index(): View
     {
         $userId = auth()->id();
         $images =
