@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Image;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ListImageController extends Controller
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Http\Requests\UpdateSettingRequest;
+use Illuminate\View\View;
 
 class SettingController extends Controller
 {
