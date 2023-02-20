@@ -14,13 +14,13 @@ class SocialFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'instagram' => rand(0, 1) === 1 ? $this->faker->url():NULL,
-            'facebook' => rand(0, 1) === 1 ? $this->faker->url():NULL,
-            'twitter' => rand(0, 1) === 1 ? $this->faker->url():NULL,
-            'website' => rand(0, 1) === 1 ? $this->faker->url():NULL,
+            'instagram' => rand(0, 1) === 1 ? $this->faker->url() : null,
+            'facebook' => rand(0, 1) === 1 ? $this->faker->url() : null,
+            'twitter' => rand(0, 1) === 1 ? $this->faker->url() : null,
+            'website' => rand(0, 1) === 1 ? $this->faker->url() : null,
         ];
     }
 }

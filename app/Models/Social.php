@@ -11,7 +11,8 @@ class Social extends Model
 
     protected $fillable = ['facebook', 'twitter', 'instagram', 'website', 'user_id'];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class); //, "id_user", "key"); //Default Laravel: user_id, id
     }
 }

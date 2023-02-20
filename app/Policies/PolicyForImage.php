@@ -8,14 +8,16 @@ use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PolicyForImage
-{ 
+{
     use HandlesAuthorization;
 
-    public function update(User $user, Image $image){
+    public function update(User $user, Image $image): bool
+    {
         return $user->id === $image->user_id || $user->role === Role::Editor;
     }
 
-    public function delete(User $user, Image $image){
-        return $user->id === $image->user_id ;
+    public function delete(User $user, Image $image): bool
+    {
+        return $user->id === $image->user_id;
     }
 }

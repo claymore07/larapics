@@ -15,15 +15,20 @@ class Comment extends Model
     {
         return $this->belongsTo(Image::class);
     }
-    public function user(){
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function scopeForUser($query, User $user){
+    public function scopeForUser($query, User $user)
+    {
         // Image::whereBelongsTo($user) => where('user_id', $user->id)
         return $query->whereIn('image_id', Image::whereBelongsTo($user)->pluck('id'));
     }
-    public function scopeApproved($query){
+
+    public function scopeApproved($query)
+    {
         return $query->where('approved', true);
     }
 }

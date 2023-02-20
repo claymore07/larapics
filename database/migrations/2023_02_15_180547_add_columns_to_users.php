@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             //
@@ -21,16 +19,13 @@ return new class extends Migration
             $table->string('city')->nullable()->after('cover_image');
             $table->string('country')->nullable()->after('city');
             $table->string('about_me')->nullable()->after('country');
-
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
             //

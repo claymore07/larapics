@@ -16,13 +16,14 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         $this->faker->addProvider(new Address($this->faker));
+
         return [
             'name' => fake()->name(),
             'email' => $email = fake()->unique()->safeEmail(), // bob@gmail.com ==> @ ==> bob
-            'username' => strstr($email, '@', true).rand(100,150),
+            'username' => strstr($email, '@', true).rand(100, 150),
             'city' => rand(0, 1) === 0 ? null : $this->faker->city(),
             'country' => rand(0, 1) === 0 ? null : $this->faker->country(),
             'about_me' => rand(0, 1) === 0 ? null : substr(fake()->text, 15),
@@ -34,10 +35,8 @@ class UserFactory extends Factory
 
     /**
      * Indicate that the model's email address should be unverified.
-     *
-     * @return static
      */
-    public function unverified()
+    public function unverified(): static
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,

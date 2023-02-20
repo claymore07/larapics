@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class FavorController extends Controller
 {
@@ -13,27 +14,30 @@ class FavorController extends Controller
         $this->middleware(['auth']);
     }
 
-    public function index(){
+    public function index(): View
+    {
         $userId = auth()->id();
         $images =
-        Image::whereHas('favorites', function($query) use ($userId){
+        Image::whereHas('favorites', function ($query) use ($userId) {
             $query->where('user_id', $userId);
         })
         ->latest()
         ->paginate(15)
         ->withQueryString();
+
         return view('image.index', compact('images'));
     }
 
-    public function update(Image $image, Request $request){
-        if($image->hasBeenFavored()){
-            $message = "You have successfully removed the image from favorites!";
-        }
-        else{
-            $message = "You have successfully added the image to favorites!";
+    public function update(Image $image, Request $request)
+    {
+        if ($image->hasBeenFavored()) {
+            $message = 'You have successfully removed the image from favorites!';
+        } else {
+            $message = 'You have successfully added the image to favorites!';
         }
 
         auth()->user()->favorites()->toggle($image->id);
+
         return back()->with('message', $message);
     }
 }

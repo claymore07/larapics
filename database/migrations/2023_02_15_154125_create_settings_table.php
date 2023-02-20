@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
@@ -19,17 +17,15 @@ return new class extends Migration
             $table->unique('user_id');
             $table->boolean('disable_comments')->default(false);
             $table->boolean('moderate_comments')->default(false);
-            $table->json("email_notification");
+            $table->json('email_notification');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('settings');
     }

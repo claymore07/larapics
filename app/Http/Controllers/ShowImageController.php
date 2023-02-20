@@ -4,16 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ShowImageController extends Controller
 {
     /**
      * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function __invoke(Image $image, Request $request)
+    public function __invoke(Image $image, Request $request): View
     {
         $relatedImages = $image->relatedImages();
 
@@ -22,7 +20,8 @@ class ShowImageController extends Controller
         $disableComment = $image->user->setting->disable_comments;
 
         // $comments = $disableComment ? [] : $image->comments()->with('user')->approved()->latest()->get(); // image_id = 1 => comments [1:7] => user [1:7]
-        $comments =$image->comments()->with('user')->approved()->latest()->get();
+        $comments = $image->comments()->with('user')->approved()->latest()->get();
+
         return view('image-show',
         compact('image', 'comments', 'disableComment', 'relatedImages'));
     }

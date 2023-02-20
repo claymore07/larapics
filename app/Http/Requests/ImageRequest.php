@@ -9,10 +9,8 @@ class ImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -22,27 +20,29 @@ class ImageRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
-        if($this->method() == 'PUT'){
+        if ($this->method() == 'PUT') {
             return [
                 'title' => 'required',
-                'tags'  => 'required',
+                'tags' => 'required',
             ];
         }
+
         return [
             'file' => 'required|image',
             'title' => 'nullable',
-            'tags'  => 'nullable',
+            'tags' => 'nullable',
         ];
     }
 
-    public function getData(){
+    public function getData()
+    {
         $data = $this->validated() + [
             'user_id' => $this->user()->id,
         ];
 
-        if($this->hasFile('file')){
+        if ($this->hasFile('file')) {
             $directory = Image::makeDirectory();
 
             $data['file'] = $this->file->store($directory);

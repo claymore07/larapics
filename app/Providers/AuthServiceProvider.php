@@ -25,13 +25,9 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
-        $this->registerPolicies();
-
         // Gate::define('update-image', function(User $user, Image $image){
         //     // dump('After image-Update');
         //     return $user->id === $image->user_id || $user->role === Role::Editor;
@@ -47,12 +43,10 @@ class AuthServiceProvider extends ServiceProvider
 
         // Gate::define('delete-image', [PolicyForImage::class, 'delete']);
 
-
-        Gate::before(function($user, $ability){
-            if($user->role === Role::Admin){
+        Gate::before(function ($user, $ability) {
+            if ($user->role === Role::Admin) {
                 return true;
             }
         });
-
     }
 }

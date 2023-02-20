@@ -6,6 +6,7 @@ use App\Http\Requests\ImageRequest;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
 
 class ImageController extends Controller
 {
@@ -15,12 +16,11 @@ class ImageController extends Controller
 
         $this->authorizeResource(Image::class);
     }
+
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
         $images =
         Image::visibleFor(request()->user())
@@ -33,10 +33,8 @@ class ImageController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
         //
         return view('image.create');
@@ -45,7 +43,6 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ImageRequest $request)
@@ -53,6 +50,7 @@ class ImageController extends Controller
         //
         $image = Image::create($data = $request->getData());
         $image->syncTags($data['tags']); // mountain,sea,fire,camp
+
         return to_route('images.index')->with('message', 'Image has been uploaded Successfully!');
     }
 
@@ -60,20 +58,16 @@ class ImageController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
+    public function show(Image $image): View
     {
         // return view('image.show', compact('image'));
     }
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Image  $image
-     * @return \Illuminate\Http\Response
      */
-    public function edit(Image $image)
+    public function edit(Image $image): View
     {
         // if (!Gate::allows('update-image', $image)) {
         //     abort(403, "Access denied");
@@ -89,8 +83,6 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Image  $image
      * @return \Illuminate\Http\Response
      */
     public function update(ImageRequest $request, Image $image)
@@ -102,13 +94,13 @@ class ImageController extends Controller
 
         $image->update($data = $request->getData());
         $image->syncTags($data['tags']);
+
         return to_route('images.index')->with('message', 'Image has been Updated Successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Image  $image
      * @return \Illuminate\Http\Response
      */
     public function destroy(Image $image)
@@ -117,6 +109,7 @@ class ImageController extends Controller
         //     abort(403, "Access denied");
         // }
         $image->delete();
-        return to_route('images.index')->with('message','Image has been deleted Successfully!');
+
+        return to_route('images.index')->with('message', 'Image has been deleted Successfully!');
     }
 }

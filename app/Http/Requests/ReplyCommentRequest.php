@@ -8,10 +8,8 @@ class ReplyCommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +19,7 @@ class ReplyCommentRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'body' => 'required|min:5',
@@ -30,11 +28,12 @@ class ReplyCommentRequest extends FormRequest
 
     public function getData()
     {
-       $comment = $this->route('comment');
-       return [
-            'body' => "@". $comment->user->username . "\n" . $this->body,
+        $comment = $this->route('comment');
+
+        return [
+            'body' => '@'.$comment->user->username."\n".$this->body,
             'image_id' => $comment->image_id,
-            'user_id'  => $this->user()->id,
-       ];
+            'user_id' => $this->user()->id,
+        ];
     }
 }

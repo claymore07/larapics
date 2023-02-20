@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Tag extends Model
 {
     use HasFactory;
+
     protected $fillable = ['name', 'slug'];
 
-    public function images() :BelongsToMany
+    public function images(): BelongsToMany
     {
         return $this->belongsToMany(Image::class);
     }
