@@ -19,8 +19,6 @@ class ImageController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index(): View
     {
@@ -35,8 +33,6 @@ class ImageController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create(): View
     {
@@ -47,7 +43,6 @@ class ImageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ImageRequest $request)
@@ -63,7 +58,6 @@ class ImageController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function show(Image $image): View
     {
@@ -72,9 +66,6 @@ class ImageController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Image  $image
-     * @return \Illuminate\Http\Response
      */
     public function edit(Image $image): View
     {
@@ -92,8 +83,6 @@ class ImageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Image  $image
      * @return \Illuminate\Http\Response
      */
     public function update(ImageRequest $request, Image $image)
@@ -112,7 +101,6 @@ class ImageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Image  $image
      * @return \Illuminate\Http\Response
      */
     public function destroy(Image $image)
